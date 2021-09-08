@@ -1,0 +1,4 @@
+/* components/essay/index.wxss */
+
+/* 导入外部样式 */
+@import "../common.wxss";

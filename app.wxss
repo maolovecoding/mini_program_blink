@@ -1,0 +1,6 @@
+/**app.wxss**/
+/* 设置全局的样式 */
+page {
+  font-family: 'MicroSoft Yahei',' Franklin Gothic Medium';
+  font-size: 32rpx;
+}

@@ -1,0 +1,29 @@
+/* components/like/index.wxss */
+
+.container{
+  /* 设置弹性盒，且宽度高度还是自适应 inline-flex */
+  display: inline-flex;
+  flex-direction: row;
+  /* 给一个内边距 */
+  padding-top: 10rpx;
+  padding-right: 6rpx;
+}
+/* 图片样式 */
+.container image {
+  width: 32rpx;
+  height: 28rpx;
+}
+
+.container text {
+  /* 指定字体 */
+  font-family: "PingFangSC-Thin";
+  font-weight: 100;
+  font-size: 24rpx;
+  color: #bbb;
+  /* 让字体向上走 */
+  position: relative;
+  bottom: 10rpx;
+  left: 6rpx;
+  /* 消除文字间距 设置行高*/
+  line-height: 24rpx;
+}

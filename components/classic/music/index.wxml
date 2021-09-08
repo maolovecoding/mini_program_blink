@@ -1,0 +1,10 @@
+<!--components/classic/music/index.wxml-->
+
+<view hidden="{{hidden}}" class="container">
+  <!-- 封面图 -->
+  <image class="classic-img {{playing?'rotation':''}}" src="{{img}}"></image>
+  <!-- 是否播放中，暂停中 的图片 -->
+  <image bindtap="onPlay" class="player-img" src="{{!playing?playSrc:pauseSrc}}"></image>
+  <image class="tag" src="./images/music@tag.png"></image>
+  <text class="content">{{content}}</text>
+</view>

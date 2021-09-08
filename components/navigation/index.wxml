@@ -1,0 +1,10 @@
+<!--components/navigation/index.wxml-->
+
+<view class="container">
+  <!-- 左 -->
+  <image bindtap="onLeft" class="icon" src="{{latest? disLeftSrc: leftSrc}}"></image>
+  <!-- 标题 -->
+  <text class="title">{{title}}</text>
+  <!-- 右 -->
+  <image bindtap="onRight" class="icon" src="{{first? disRightSrc: rightSrc}}"></image>
+</view>

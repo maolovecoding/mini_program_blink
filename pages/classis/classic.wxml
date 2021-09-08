@@ -1,0 +1,20 @@
+<!--pages/classis/classic.wxml-->
+
+<view class="container">
+  <view class="header">
+    <m-episode class="episode" index="{{classic.index}}" />
+    <!-- 绑定数据 -->
+    <!-- 监听组件的事件 -->
+    <m-like class="like" bind:like="onLike" count="{{likeCount}}" like="{{likeStatus}}" />
+  </view>
+  <!-- 使用电影组件 -->
+  <!-- hidden属性 控制显示和隐藏 但dom元素还是存在的，只是隐藏了 -->
+  <!-- 不是电影类型 则隐藏 -->
+  <m-movie hidden="{{classic.type !== 100}}" img="{{classic.image}}" content="{{classic.content}}" />
+  <m-music wx:if="{{classic.type === 200}}" img="{{classic.image}}" content="{{classic.content}}" musicSrc="{{classic.url}}" />
+  <m-essay hidden="{{classic.type !== 300}}" img="{{classic.image}}" content="{{classic.content}}" />
+
+  <!-- 监听组件发出的左按钮 和 右按钮 两个事件 -->
+  <m-navigation bind:left="onNext" bind:right="onPrevious" title="{{classic.title}}" first="{{first}}"
+    latest="{{latest}}" class="navi" />
+</view>

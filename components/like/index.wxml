@@ -1,0 +1,7 @@
+<!--components/like/index.wxml-->
+
+<!-- 点击这个容器，实现点赞和取消点赞组件的切换 -->
+<view class="container" bind:tap="onLike">
+  <image src="{{like?yesSrc:noSrc}}"></image>
+  <text>{{count}}</text>
+</view>

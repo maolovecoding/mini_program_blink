@@ -1,0 +1,27 @@
+/* components/classic/movie/index.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 大图 */
+.classic-img {
+  width: 750rpx;
+  height: 500rpx;
+}
+
+/* 电影tag */
+.tag {
+  width: 46rpx;
+  height: 142rpx;
+  position: relative;
+  right:310rpx;
+  bottom: 60rpx;
+}
+
+/* 文字 */
+text {
+  font-size: 36rpx;
+  max-width: 550rpx;
+}
