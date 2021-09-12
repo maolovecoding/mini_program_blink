@@ -1,0 +1,29 @@
+// 用来过滤掉 \n 解析为换行等
+/**
+ * wxs和js类似。但是，wxs并不是js。wxs有自己独立的运行环境。
+ * @param {String} text 文本
+ */
+var format = function (text) { // 只能使用var定义（目前是这样），也不能使用箭头函数
+  // 获取正则表达式的对象 （参照官方文档）
+  if(!text) return;
+  var reg = getRegExp("\\\\n","g");
+  return text.replace(reg,"\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+}
+/**
+ * 对数组的元素内容进行截取，主要是对短评进行截取
+ * @param array 数组
+ * @param length 长度
+ */
+var limit = function(array,length){
+  return array.slice(0,length);
+}
+
+
+
+
+
+
+module.exports = {
+  format:format,
+  limit:limit
+};

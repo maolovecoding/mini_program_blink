@@ -2,7 +2,10 @@
   "pages": [
     "pages/classis/classic",
     "pages/book/book",
-    "pages/my/my"
+    "pages/my/my",
+    "pages/book-detail/book-detail",
+    "pages/about/about",
+    "pages/course/course"
   ],
   "window": {
     "backgroundTextStyle": "light",

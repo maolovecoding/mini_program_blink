@@ -13,7 +13,9 @@ Component({
       value: false
     },
     // 点赞数
-    count: Number
+    count: Number,
+    // 只读
+    readOnly:Boolean
   },
 
   /**
@@ -39,6 +41,7 @@ Component({
      * @param {*} event 事件对象
      */
     onLike(event) {
+      if(this.properties.readOnly) return;
       // 切换点赞的图标
       let like = this.properties.like;
       let count = this.properties.count;

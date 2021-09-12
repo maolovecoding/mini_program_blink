@@ -1,2 +1,39 @@
 <!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+  <image src="/images/my/my@bg.png" class="bg"></image>
+  <!-- 获取用户信息 调用小程序的接口 不需要授权就能显示用户的头像和昵称 -->
+  <!-- 这种方式只能展示，无法在js中获取用户的信息 -->
+  <!-- <open-data class="avatar avatar-position" type="userAvatarUrl" /> -->
+
+  <!-- 使用自定义button获取用户信息并展示 -->
+  <m-button wx:if="{{!authorized}}" open-type="getUserInfo" class="avatar-position" bind:getUserInfo="onGetUserInfo">
+    <image slot="img" class="avatar" src="/images/my/my.png"></image>
+  </m-button>
+  <view wx:if="{{authorized}}" class="avatar-container avatar-position">
+    <image src="{{userInfo.avatarUrl}}" class="avatar"></image>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+
+  <view class="about-container">
+    <view bindtap="onJumpToAbout" class="about-us">
+      <image src="/images/my/about.png"></image>
+      <text class="description">关于我们</text>
+    </view>
+    <view class="about-us">
+      <text class="book-num">{{bookCount}}</text>
+      <text class="description">喜欢的书</text>
+    </view>
+  </view>
+  <!-- <button bindtap="getUserInfo">授权</button> -->
+  <view class="like-container">
+    <image class="headline" src="/images/my/like.png"></image>
+    <view class="preview-container">
+      <block wx:for="{{classics}}" wx:key="id">
+        <m-preview class="preview" classic="{{item}}"/>
+      </block>
+    </view>
+  </view>
+</view>
+
+<image src="/images/my/study.png" bindtap="onStudy" class="study">
+</image>

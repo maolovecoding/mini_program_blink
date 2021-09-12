@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "m-mutton":"/components/image-button/index",
+    "m-preview":"/components/preview/index"
+  }
 }

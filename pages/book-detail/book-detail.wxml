@@ -1,0 +1,99 @@
+<!--pages/book-detail/book-detail.wxml-->
+
+<!-- 引入wxs模块 ,并使用module属性指定模块名（任意名称）-->
+<wxs src="../../utils/filter.wxs" module="util" />
+
+<view class="container">
+  <view class="head">
+    <image src="{{bookDetail.image}}"></image>
+    <text class="title">{{bookDetail.title}}</text>
+    <text class="author">{{bookDetail.author}}</text>
+  </view>
+  <!-- 短评 -->
+  <view class="sub-container">
+    <text class="headline">短评</text>
+    <!-- 空数组表示没有短评 -->
+    <text class="shadow" wx:if="{{comments==false}}">还没有短评</text>
+    <view class="comment-container">
+      <!-- 显示短评数量我们可以进行一波控制 -->
+      <block wx:for="{{util.limit(comments,10)}}" wx:key="content" wx:for-item="comment">
+        <!-- 传递外部样式 -->
+        <m-tag tag-class="{{tool.hightlight(index)}}" text="{{comment.content}}">
+          <!-- 插槽的使用 -->
+          <!-- 直接在标签上 通过slot属性指定要替换的插槽 -->
+          <text class="num" slot="after">{{"+" + comment.nums}}</text>
+        </m-tag>
+      </block>
+    </view>
+  </view>
+  <view class="sub-container">
+    <text class="headline">内容简介</text>
+    <!-- 数据绑定的时候，这个函数会被执行两次，数据初始化一次，数据更新一次 -->
+    <!-- decode 解码我们的某些特殊字符 -->
+    <!-- decode可以解析的有 &nbsp; &lt; &gt; &amp; &apos; &ensp; &emsp; -->
+    <text decode="{{true}}" class="content">{{util.format(bookDetail.summary)}}</text>
+  </view>
+  <view class="sub-container">
+    <text class="headline">书本信息</text>
+    <view class="detail-container">
+      <view class="vertical description">
+        <text>出版社</text>
+        <text>出版年</text>
+        <text>页数</text>
+        <text>定价</text>
+        <text>装帧</text>
+      </view>
+      <view class="vertical">
+        <text>{{bookDetail.publisher}}</text>
+        <text>{{bookDetail.pubdate}}</text>
+        <text>{{bookDetail.pages}}</text>
+        <text>{{bookDetail.price}}</text>
+        <text>{{bookDetail.binding}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 引入wxs模块并使用 -->
+<!-- <text>{{util.format()}}</text> -->
+
+<!-- 实现短评功能 -->
+<view class="post-container" wx:if="{{!posting}}">
+  <view class="post-fake" bindtap="onFakePost">
+    <text>输入短评</text>
+  </view>
+  <!-- 点赞 -->
+  <m-like like="{{likeStatus}}" count="{{likeCount}}" class="like" bind:like="onLike"></m-like>
+</view>
+
+<!-- 评论输入框 -->
+<view class="posting-container" wx:if="{{posting}}">
+  <view class="post-header">
+    <text wx:if="{{comments!=false}}">仅可点击标签+1</text>
+    <text wx:else>暂无短评</text>
+    <text class="cancel" bind:tap="onCancel">取消</text>
+  </view>
+  <view class="comment-container">
+    <!-- 展示前三个短评 -->
+    <block wx:for="{{util.limit(comments,3)}}" wx:key="content" wx:for-item="comment">
+      <!-- 传递外部样式 -->
+      <m-tag bind:tapping="onPostShortComment" tag-class="{{tool.hightlight(index)}}" text="{{comment.content}}">
+        <!-- 插槽的使用 -->
+        <!-- 直接在标签上 通过slot属性指定要替换的插槽 -->
+        <text class="num" slot="after">{{"+" + comment.nums}}</text>
+      </m-tag>
+    </block>
+  </view>
+  <!-- bindconfirm 输入完成后，点击回车触发的事件 -->
+  <input bindconfirm="onPostShortComment" type="text" placeholder="短评最多12个字" class="post" />
+</view>
+<!-- 遮罩 -->
+<m-mask wx:if="{{posting}}"/>
+
+<wxs module="tool">
+  var hightlight = function(index){
+    if(index==0)return "ex-tag1";
+    if(index==1) return "ex-tag2";
+    return '';
+  }
+  module.exports.hightlight = hightlight;
+</wxs>

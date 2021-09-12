@@ -1,0 +1,59 @@
+/* components/book/index.wxss */
+.container {
+  display: flex;
+  position: relative;
+  /* 盒子阴影 */
+  box-shadow: 2px 2px 3px #e3e3e3;
+  flex-direction: column;
+  width: 240rpx;
+  height: 360rpx;
+  margin-top: 30rpx;
+}
+
+.container image {
+  width: 100%;
+  height: 100%;
+  border-radius: 4rpx;
+}
+
+.description {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  bottom: 0;
+  background-color: #fff;
+  padding: 5rpx 10rpx 8rpx 16rpx;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  border-bottom-right-radius: 4rpx;
+  border-bottom-left-radius: 4rpx;
+}
+
+.title {
+  margin-top: 10rpx;
+  text-overflow: ellipsis;
+  /* 和 normal 一样，连续的空白符会被合并。但文本内的换行无效。 */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.author {
+  font-size: 20rpx;
+  color: #999;
+  text-overflow: ellipsis;
+  margin-bottom: 10rpx;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.foot {
+  font-size: 20rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.footer {
+  color: #666;
+}

@@ -10,6 +10,22 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res.code);
+        wx.request({
+          url: 'http://localhost:3000/v1/token',
+          method: "POST",
+          data: {
+            type: 100,
+            account: res.code
+          },
+          success: (res) => {
+            console.log(res);
+            // 令牌写入缓存
+            if (res.statusCode === 200) {
+              wx.setStorageSync('token', res.data.token);
+            }
+          }
+        })
       }
     })
   },

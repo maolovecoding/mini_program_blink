@@ -1,0 +1,9 @@
+<!--components/tag/index.wxml-->
+
+<view bindtap="onTap" class="container tag-class">
+  <text>{{text}}</text>
+  <!-- 组件插槽的使用 -->
+  <!-- 这是具名插槽，使用的时候也需要指定插槽的名字 -->
+  <!-- 如果只有一个插槽，是可以不指定插槽的名称的，那样外面使用的时候也可以不指定插槽的名称 -->
+  <slot name="after"></slot>
+</view>

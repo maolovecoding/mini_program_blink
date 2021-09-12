@@ -50,10 +50,17 @@ class ClassicModel extends Http {
         }
       })
     })
-
   }
-
-
+  /**
+   * 获取喜欢
+   * @param {*} success 
+   */
+  getMyFavor(success) {
+    this.request({
+      url: "classic/favor",
+      success
+    })
+  }
   /**
    * 是否是最后的期刊
    * @param {*} index 期刊号 

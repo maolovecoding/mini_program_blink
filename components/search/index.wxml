@@ -1,0 +1,47 @@
+<!--components/search/index.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="search-container">
+      <image class="icon" src="./images/search.png" />
+      <input value="{{q}}" bindconfirm="onConfirm" type="text" placeholder-class="in-bar" placeholder="书籍名" class="bar"
+        auto-focus="true" />
+      <image bindtap="onDeleteCancel" class="cancel-img" src="./images/cancel.png"></image>
+    </view>
+    <view bindtap="onCancel" class="cancel">取消</view>
+  </view>
+  <!-- 历史搜索 热门搜索 -->
+  <view wx:if="{{!searching}}">
+    <view class="history">
+      <view class="title">
+        <view class="chunk"></view>
+        <text>历史搜索</text>
+      </view>
+      <view class="tags">
+        <block wx:for="{{historyWords}}" wx:key="index">
+          <m-tag bind:tapping="onConfirm" text="{{item}}" />
+        </block>
+      </view>
+    </view>
+    <view class="history hot-search">
+      <view class="title">
+        <view class="chunk"></view>
+        <text>热门搜索</text>
+      </view>
+      <view class="tags">
+        <block wx:for="{{hotKeywords}}" wx:key="index">
+          <m-tag bind:tapping="onConfirm" text="{{item}}" />
+        </block>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="books-container">
+    <block wx:for="{{searchArray}}" wx:key="id">
+      <m-book book="{{item}}" class="book" />
+    </block>
+  </view>
+  <!-- 加载动画 -->
+  <m-loading class="loading-center" wx:if="{{loadingCenter}}" />
+  <m-loading class="loading" wx:if="{{loading}}" />
+  <!-- noneResult变量 是否搜索到数据 定义在pagination中 -->
+  <text wx:if="{{noneResult}}" class="empty-tip">没有搜索到书籍</text>
+</view>

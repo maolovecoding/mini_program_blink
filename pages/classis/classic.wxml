@@ -3,9 +3,15 @@
 <view class="container">
   <view class="header">
     <m-episode class="episode" index="{{classic.index}}" />
-    <!-- 绑定数据 -->
+    <view class="like-container">
+      <!-- 绑定数据 -->
     <!-- 监听组件的事件 -->
     <m-like class="like" bind:like="onLike" count="{{likeCount}}" like="{{likeStatus}}" />
+    <!-- 分享 -->
+    <m-buttom class="shart-btn" open-type="share">
+      <image class="share" slot="img" src="/images/icon/share.png"></image>
+    </m-buttom>
+    </view>
   </view>
   <!-- 使用电影组件 -->
   <!-- hidden属性 控制显示和隐藏 但dom元素还是存在的，只是隐藏了 -->
